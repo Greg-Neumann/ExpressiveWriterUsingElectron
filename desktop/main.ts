@@ -1,11 +1,11 @@
 const { app, BrowserWindow } = require("electron")
 const path = require("path")
-
-let win
+//
+let win: any
 
 async function createWindow() {
     win = new BrowserWindow({
-        width: 1024,
+        width: 1200,
         height: 768,
         webPreferences: {
             nodeIntegration: false, // It's important for security reasons
@@ -14,7 +14,7 @@ async function createWindow() {
     })
 
     // Load the Angular app
-    if(process.env.APP_ENV == "prod") {
+    if(process.env?.['APP_ENV'] == "prod") {
         win.loadFile(path.join(__dirname, "www/index.html"))
     } else {
         await win.loadURL("http://localhost:4200")
